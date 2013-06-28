@@ -236,7 +236,7 @@ vector<string> VisualizerResourceUtilization::getResourceAxisLatexSource(const u
 	/* AXIS X */
 	axisLatexSource.push_back("\t\t%% Draw X axis.");
 	line<<"\t\t\\draw[axisline] (0,"<<axisOriginY<<") -- ";
-	line<<"("<<projectMakespan*axisElongationX<<","<<axisOriginY<<")";
+	line<<"("<<projectMakespan+axisElongationX<<","<<axisOriginY<<")";
 	line<<" node [below="<<textDist<<"] {$t\\,[s]$};"<<endl;
 	axisLatexSource.push_back(extractLine(line));
 
@@ -249,7 +249,7 @@ vector<string> VisualizerResourceUtilization::getResourceAxisLatexSource(const u
 	/* AXIS Y */
 	axisLatexSource.push_back("\t\t%% Draw Y axis.");
 	line<<"\t\t\\draw[axisline] (0,"<<axisOriginY<<") -- ";
-	line<<"(0,"<<axisOriginY+axisElongationY*resourceCapacity<<") ";
+	line<<"(0,"<<axisOriginY+axisElongationY+resourceCapacity<<") ";
 	line<<"node [left="<<textDist<<"] {$R_"<<resourceId<<"$};"<<endl;
 	axisLatexSource.push_back(extractLine(line));
 

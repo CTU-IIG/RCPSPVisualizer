@@ -2,17 +2,18 @@
 #include <glpk.h>
 
 namespace ConfigureGraph {
-	const char* standardNodeColor = "lightblue";
+	const char* standardNodeColor = "\"#ccccff\"";
 	const char* criticalNodeColor = "orange";
 	const char* startNodeColor = "red";
 	const char* finishNodeColor = "green";
+	const char* graphOrientation = "TD"; // LR ~ left to right, TD ~ top to down
 }
 
 namespace ConfigureResourceUtilization	{
 	const char* blockColor = "blue";
 	double spaceBetweenResources = 3;
-	double axisElongationX = 1.02;
-	double axisElongationY = 1.04;
+	double axisElongationX = 1;
+	double axisElongationY = 0.7;
 	double textDist = 10;
 	double ticsLength = 0.1;
 }

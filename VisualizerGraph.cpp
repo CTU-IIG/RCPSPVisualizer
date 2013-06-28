@@ -13,6 +13,7 @@ void VisualizerGraph::writeInstanceGraph(const string& file) const	{
 
 vector<string> VisualizerGraph::getGraphAtDotFormat() const	{
 	vector<string> dot;
+	string graphOrientation = ConfigureGraph::graphOrientation;
 	string standardNodeColor = ConfigureGraph::standardNodeColor;
 	string criticalNodeColor = ConfigureGraph::criticalNodeColor;
 	string startNodeColor = ConfigureGraph::startNodeColor, finishNodeColor = ConfigureGraph::finishNodeColor;
@@ -21,7 +22,9 @@ vector<string> VisualizerGraph::getGraphAtDotFormat() const	{
 	stringstream line(stringstream::in | stringstream::out);
 
 	dot.push_back("digraph G {");
-	dot.push_back("\tnode [style=filled, width=\"0.8\", height=\"0.8\"];");
+	line<<"\tgraph[rankdir="<<graphOrientation<<"];"<<endl;
+	dot.push_back(extractLine(line));
+	dot.push_back("\tnode[style=filled, width=\"0.8\", height=\"0.8\", fixedsize=true, margin=\"0,0\"];");
 	for (uint32_t i = 0; i < numberOfActivities; ++i)	{
 		if (i == 0)	{
 			line<<"\t"<<i<<" [fillcolor="<<startNodeColor<<", shape=doublecircle, label=\""<<i<<"\\n"<<activitiesDuration[i]<<"\"];";

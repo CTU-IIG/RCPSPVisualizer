@@ -8,6 +8,7 @@ namespace ConfigureGraph {
 	extern const char* criticalNodeColor;
 	extern const char* startNodeColor;
 	extern const char* finishNodeColor;
+	extern const char* graphOrientation;
 }
 
 namespace ConfigureResourceUtilization	{
