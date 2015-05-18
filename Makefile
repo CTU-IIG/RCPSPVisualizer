@@ -23,6 +23,8 @@ endif
 .PHONY: clean
 .PHONY: distrib
 
+all: $(PROGRAM)
+
 # Default option for make.
 build: $(PROGRAM)
 

@@ -1,0 +1,42 @@
+The program RCPSPVisualizer is distributed under the terms of the GNU General Public License.
+Authors: Libor Bukata (bukatlib@fel.cvut.cz) and Premysl Sucha (suchap@fel.cvut.cz)
+
+The purpose of the program is to generate pdf files of precedence graphs, resources utililization, and visualization of statistical analysis.
+
+Required software:
+GNU Compiler Collection (GCC)
+GNU Bourne Again SHell (BASH)
+GNU Linear Programming Kit (GLPK)
+Latex for translating *.tex files to *.pdf files.
+Graphviz required for graph generation.
+
+How to install:
+1) Update the Makefile file:
+	a) Set installation path - variable INST_PATH.
+2) Compile program: make all
+3) Optional program installation (the program can be executed from the current directory):
+	a) make install
+
+How to use program (example):
+1) Install either RCPSPCpu or RCPSPGpu program.
+2) Install RCPSPVisualizer
+2) Generate binary files with results, e.g.:
+	a) './RCPSPGpu -if your_dataset/*.sm --write-result-file' (add your additional arguments)
+	b) Move the files to e.g. Visualization/ directory, i.e. 'mv your_dataset/*.res ${INST_PATH}/Visualization/'
+3) Generate *.dot and *.tex files:
+	a) cd ${INST_PATH}
+	b) './RCPSPVisualizer Visualization/*.res'
+4) Compile pdf files by using Latex and Graphviz:
+	a) sh GeneratePDF.sh Visualization/
+5) Find the generated pdf files in Visualization/ directory.
+
+Remark:
+1) The standard datasets for RCPSPCpu and RCPSPGpu  can be downloaded from http://www.om-db.wi.tum.de/psplib/.
+2) If you would like to visualize the results from your algorithm it is necessary to write a result file in the correct format.
+The binary format is defined e.g. in the ScheduleSolver::writeBestScheduleToFile method located in the RCPSPCpu/ScheduleSolver.cpp file.
+3) If you include the generated graphics in your paper please cite our original paper in your publication list.
+
+Libor Bukata, Premysl Sucha, Zdenek Hanzalek, Solving the Resource Constrained
+Project Scheduling Problem using the parallel Tabu Search designed for the CUDA platform,
+Journal of Parallel and Distributed Computing, Volume 77, March 2015,
+Pages 58-68, ISSN 0743-7315, http://dx.doi.org/10.1016/j.jpdc.2014.11.005.
